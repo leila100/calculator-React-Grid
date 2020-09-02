@@ -13,7 +13,6 @@ const Calculator = () => {
 
   const executeOperation = () => {
     if (!operation) return;
-    console.log("first: ", first, " second: ", display, " operation: ", operation);
     let result;
     const second = parseFloat(display);
     switch (operation) {
@@ -40,8 +39,10 @@ const Calculator = () => {
     if (btn === "/" || btn === "+" || btn === "x" || btn === "-") {
       setOperation(btn);
       if (!first) {
+        // Save the first number in first
         setFirst(parseFloat(display));
       } else {
+        // continue to next operation without hitting the = button
         const result = executeOperation();
         setDisplay(result.toString());
         setFirst(result);
@@ -50,8 +51,7 @@ const Calculator = () => {
       setDisplay("0");
       setFirst();
     } else if (btn === "=") {
-      console.log("display: ", display);
-      if (first) {
+      if (first && operation) {
         const result = executeOperation();
         setDisplay(result.toString());
         setFirst();
