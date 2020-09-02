@@ -5,6 +5,5 @@ export const Container = styled.div`
   margin: 100px auto;
   border: 1px solid black;
   display: grid;
-  grid-template-rows: 33% 33% 33%;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template: repeat(6, 1fr) / repeat(4, 1fr);
 `;
