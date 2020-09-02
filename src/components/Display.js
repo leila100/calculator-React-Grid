@@ -2,10 +2,10 @@ import React from "react";
 
 import { DisplayContainer, Result } from "../styling/DisplayStyles";
 
-const Display = () => {
+const Display = ({ display }) => {
   return (
     <DisplayContainer>
-      <Result>0</Result>
+      <Result>{display}</Result>
     </DisplayContainer>
   );
 };
