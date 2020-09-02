@@ -15,10 +15,11 @@ const Calculator = () => {
     if (!operation) return;
     console.log("first: ", first, " second: ", display, " operation: ", operation);
     let result;
-    const second = parseInt(display);
+    const second = parseFloat(display);
     switch (operation) {
       case "/":
         result = first / second;
+        if (first % second !== 0) result = result.toFixed(2);
         break;
       case "+":
         result = first + second;
@@ -39,7 +40,11 @@ const Calculator = () => {
     if (btn === "/" || btn === "+" || btn === "x" || btn === "-") {
       setOperation(btn);
       if (!first) {
-        setFirst(parseInt(display));
+        setFirst(parseFloat(display));
+      } else {
+        const result = executeOperation();
+        setDisplay(result.toString());
+        setFirst(result);
       }
     } else if (btn === "C") {
       setDisplay("0");
